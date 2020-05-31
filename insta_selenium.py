@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from insta_user import username,password
+from insta_user import username
 import time
 
 class insta :
@@ -20,8 +20,7 @@ class insta :
         self.button = self.driver.find_element_by_xpath("/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div[4]/button")
         self.button.click()
         time.sleep(3)
-        self.infoButton = self.driver.find_element_by_xpath("/html/body/div[4]/div/div/div[3]/button[2]")
-        self.infoButton.click()
+        
 
     def followersList(self) :
         self.driver.get(f"https://www.instagram.com/{self.username}/?hl=tr")
@@ -40,7 +39,7 @@ class insta :
         while True :        # döngüye girdiğinde eğer followersCount == newFollowesCount değil ise 
                             # newFollowersCount followersCount a atanır yani yeni aşşağı indikçe yeni takipçiler hala veritabanından yükleniyor
             dialog.click()
-
+            time.sleep(2)
             action.key_down(Keys.SPACE).key_up(Keys.SPACE).perform()
 
             time.sleep(2)
@@ -68,11 +67,12 @@ class insta :
             print(link)
                     
 
-    
+listpass = ['12345678','123456789','1234567891','12345678910','cihangir123','1999cihangir','123456789fasdada','12345678asasdada','123asdasd89fasdada','12345w678asfasdada']   
 
-insta2 = insta(username,password)
-insta2.login()
-insta2.followersList()
+for passwo in listpass : 
+    insta2 = insta(username,passwo)
+    insta2.login()
+
 
 
 
